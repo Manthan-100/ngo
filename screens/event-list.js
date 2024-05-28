@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DataTable } from 'react-native-paper';
-import { Text, ScrollView, View, Button } from 'react-native';
+import { DataTable, Button } from 'react-native-paper';
+import { Text, ScrollView, View, } from 'react-native';
 
 
 const MyComponent = () => {

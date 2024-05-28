@@ -17,6 +17,7 @@ import EventList from "../screens/event-list"
 import DashBoard from '../screens/dashboard';
 //import AddEmployee from '../screens/add-employee';
 import { View, Text, TouchableOpacity } from 'react-native';
+import Home from '../screens/home';
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -47,6 +48,15 @@ const DashboardStack = () => (
       },
       headerBackVisible: false,
     }}>
+    <Stack.Screen
+      name="Home"
+      component={Home}
+      options={({ navigation }) => ({
+        headerShown: false,
+        headerLeft: () => <CustomHeader navigation={navigation} />,
+        headerTitleAlign: 'center',
+      })}
+    />
     <Stack.Screen
       name="Dashboard"
       component={DashBoard}
@@ -86,6 +96,19 @@ const Navigation = (props) => {
     <Provider>
       <NavigationContainer>
         <Drawer.Navigator initialRouteName="Event List">
+          <Drawer.Screen
+            name="Home"
+            component={Home}
+            options={({ navigation }) => ({
+              headerRight: () => (
+                <TouchableOpacity
+                  style={{ marginRight: 20 }}
+                  onPress={handleLogout}>
+                  <Text>Logout</Text>
+                </TouchableOpacity>
+              ),
+            })}
+          />
           <Drawer.Screen
             name="Dashboard"
             component={DashboardStack}
