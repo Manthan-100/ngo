@@ -13,7 +13,7 @@ import AddPurpose from '../screens/add-purpose';
 import DisplayPurpose from '../screens/display-purpose';
 import CreateEvent from '../screens/create-event';
 import EventList from "../screens/event-list"
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import DashBoard from '../screens/dashboard';
 //import AddEmployee from '../screens/add-employee';
 import { View, Text, TouchableOpacity } from 'react-native';
@@ -88,14 +88,20 @@ const DashboardStack = () => (
 );
 
 const Navigation = (props) => {
-  const handleLogout = () => {
-    props?.setIsLoggedIn && props?.setIsLoggedIn(false);
+  const handleLogout = async () => {
+    try {
+      await AsyncStorage.removeItem('user');
+      await AsyncStorage.removeItem("token")
+      props?.setIsLoggedIn && props?.setIsLoggedIn(false);
+    } catch (err) {
+      console.log(err)
+    }
   };
 
   return (
     <Provider>
       <NavigationContainer>
-        <Drawer.Navigator initialRouteName="Event List">
+        <Drawer.Navigator initialRouteName="Home">
           <Drawer.Screen
             name="Home"
             component={Home}
