@@ -108,7 +108,6 @@ const MyComponent = () => {
               </DataTable.Cell>
               <DataTable.Cell
                 style={{ marginHorizontal: 5, width: 115, marginTop: 7 }}>
-                <Button>Edit</Button>
               </DataTable.Cell>
             </DataTable.Row>
           ))}

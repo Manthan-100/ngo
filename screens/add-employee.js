@@ -65,7 +65,7 @@ export default function AddEmployee() {
 
       <View>
         {inputs?.map((item) => (
-          <>
+          <View key={item.id}>
             <TextInput id={item.id} label={item.label} />
             {item.nextLabel && (
               <View
@@ -85,7 +85,7 @@ export default function AddEmployee() {
                 </Text>
               </View>
             )}
-          </>
+          </View>
         ))}
       </View>
 
